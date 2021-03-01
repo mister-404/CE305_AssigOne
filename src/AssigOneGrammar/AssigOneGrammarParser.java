@@ -17,8 +17,8 @@ public class AssigOneGrammarParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, ID=4, INT=5, NEWLINE=6, WS=7, MUL=8, DIV=9, ADD=10, 
-		SUB=11;
+		T__0=1, T__1=2, T__2=3, ID=4, INT=5, NEW_LINE=6, WS=7, ENDSTMT=8, MUL=9, 
+		DIV=10, ADD=11, SUB=12;
 	public static final int
 		RULE_program = 0, RULE_statement = 1, RULE_expr = 2;
 	private static String[] makeRuleNames() {
@@ -30,15 +30,15 @@ public class AssigOneGrammarParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'='", "'('", "')'", null, null, null, null, "'*'", "'/'", "'+'", 
-			"'-'"
+			null, "'='", "'('", "')'", null, null, null, null, "';'", "'*'", "'/'", 
+			"'+'", "'-'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "ID", "INT", "NEWLINE", "WS", "MUL", "DIV", "ADD", 
-			"SUB"
+			null, null, null, null, "ID", "INT", "NEW_LINE", "WS", "ENDSTMT", "MUL", 
+			"DIV", "ADD", "SUB"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -138,7 +138,7 @@ public class AssigOneGrammarParser extends Parser {
 				setState(9); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << ID) | (1L << INT) | (1L << NEWLINE))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << ID) | (1L << INT) | (1L << NEW_LINE))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -164,7 +164,7 @@ public class AssigOneGrammarParser extends Parser {
 		}
 	}
 	public static class BlankContext extends StatementContext {
-		public TerminalNode NEWLINE() { return getToken(AssigOneGrammarParser.NEWLINE, 0); }
+		public TerminalNode NEW_LINE() { return getToken(AssigOneGrammarParser.NEW_LINE, 0); }
 		public BlankContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -184,7 +184,7 @@ public class AssigOneGrammarParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public TerminalNode NEWLINE() { return getToken(AssigOneGrammarParser.NEWLINE, 0); }
+		public TerminalNode ENDSTMT() { return getToken(AssigOneGrammarParser.ENDSTMT, 0); }
 		public PrintExprContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -205,7 +205,7 @@ public class AssigOneGrammarParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public TerminalNode NEWLINE() { return getToken(AssigOneGrammarParser.NEWLINE, 0); }
+		public TerminalNode ENDSTMT() { return getToken(AssigOneGrammarParser.ENDSTMT, 0); }
 		public AssignContext(StatementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -236,7 +236,7 @@ public class AssigOneGrammarParser extends Parser {
 				setState(11);
 				expr(0);
 				setState(12);
-				match(NEWLINE);
+				match(ENDSTMT);
 				}
 				break;
 			case 2:
@@ -250,7 +250,7 @@ public class AssigOneGrammarParser extends Parser {
 				setState(16);
 				expr(0);
 				setState(17);
-				match(NEWLINE);
+				match(ENDSTMT);
 				}
 				break;
 			case 3:
@@ -258,7 +258,7 @@ public class AssigOneGrammarParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(19);
-				match(NEWLINE);
+				match(NEW_LINE);
 				}
 				break;
 			}
@@ -535,13 +535,13 @@ public class AssigOneGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\r-\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16-\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
 		"\3\5\3\27\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4 \n\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\7\4(\n\4\f\4\16\4+\13\4\3\4\2\3\6\5\2\4\6\2\4\3\2\n\13\3\2\f\r\2"+
+		"\3\4\7\4(\n\4\f\4\16\4+\13\4\3\4\2\3\6\5\2\4\6\2\4\3\2\13\f\3\2\r\16\2"+
 		"\60\2\t\3\2\2\2\4\26\3\2\2\2\6\37\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\13"+
-		"\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16\5\6\4\2\16\17\7\b"+
-		"\2\2\17\27\3\2\2\2\20\21\7\6\2\2\21\22\7\3\2\2\22\23\5\6\4\2\23\24\7\b"+
+		"\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\16\5\6\4\2\16\17\7\n"+
+		"\2\2\17\27\3\2\2\2\20\21\7\6\2\2\21\22\7\3\2\2\22\23\5\6\4\2\23\24\7\n"+
 		"\2\2\24\27\3\2\2\2\25\27\7\b\2\2\26\r\3\2\2\2\26\20\3\2\2\2\26\25\3\2"+
 		"\2\2\27\5\3\2\2\2\30\31\b\4\1\2\31 \7\7\2\2\32 \7\6\2\2\33\34\7\4\2\2"+
 		"\34\35\5\6\4\2\35\36\7\5\2\2\36 \3\2\2\2\37\30\3\2\2\2\37\32\3\2\2\2\37"+

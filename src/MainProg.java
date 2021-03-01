@@ -32,16 +32,10 @@ Would you like to:-
                     AssigOneGrammarLexer lexer = new AssigOneGrammarLexer(srcCode);
                     CommonTokenStream tokens = new CommonTokenStream(lexer);
                     AssigOneGrammarParser parser = new AssigOneGrammarParser(tokens);
-                    ParseTree tree = parser.program(); // parse; start at prog
+                    ParseTree tree = parser.program(); //start parsing at program beginning
                     switch (choice) {
-                        case "a" -> {
-                            String pPrinter = new PrettyPrinter().visit(tree);
-                            System.out.println(pPrinter);
-                        }
-                        case "b" -> {
-                            VisiEval eval = new VisiEval();
-                            eval.visit(tree);
-                        }
+                        case "a" -> System.out.println(new PrettyPrinter().visit(tree));
+                        case "b" -> new VisiEval().visit(tree);
                     }
                 }
             }

@@ -2,9 +2,9 @@ grammar AssigOneGrammar;
 
 program: statement+; //a program is made up of multiple statements
 
-statement: expr NEWLINE      # printExpr
-    | ID '=' expr NEWLINE    # assign
-    | NEWLINE                # blank
+statement: expr ';'          # printExpr
+    | ID '=' expr ';'        # assign
+    | NEW_LINE                # blank
     ; //a statement is made of expressions and assignments
 
 expr: expr op=('*'|'/') expr # Multi
@@ -16,8 +16,9 @@ expr: expr op=('*'|'/') expr # Multi
 
 ID : [a-zA-Z]+ ; // matches variable names
 INT : [0-9]+ ; // matches integers
-NEWLINE:'\r'? '\n' ;
+NEW_LINE:'\r'? '\n' ;
 WS : [ \t]+ -> skip ; // removes whitespace
+ENDSTMT : ';' ;
 
 MUL : '*' ;
 DIV : '/' ;
