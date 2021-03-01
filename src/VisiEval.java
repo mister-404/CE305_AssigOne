@@ -10,7 +10,7 @@ public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
     @Override
     public Integer visitPrintExpr(AssigOneGrammarParser.PrintExprContext ctx) {
         Integer value = visit(ctx.expr());
-        System.out.println(value);
+        System.out.println(ctx.expr().getText() + " = " + value);
         return 0;
     }
 
