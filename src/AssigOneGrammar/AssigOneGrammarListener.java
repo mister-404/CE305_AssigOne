@@ -78,6 +78,18 @@ public interface AssigOneGrammarListener extends ParseTreeListener {
 	 */
 	void exitParens(AssigOneGrammarParser.ParensContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code num}
+	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNum(AssigOneGrammarParser.NumContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code num}
+	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNum(AssigOneGrammarParser.NumContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Multi}
 	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
 	 * @param ctx the parse tree
@@ -101,16 +113,4 @@ public interface AssigOneGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitId(AssigOneGrammarParser.IdContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code int}
-	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterInt(AssigOneGrammarParser.IntContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code int}
-	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitInt(AssigOneGrammarParser.IntContext ctx);
 }

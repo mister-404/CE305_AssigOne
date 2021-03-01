@@ -88,6 +88,18 @@ public class AssigOneGrammarBaseListener implements AssigOneGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterNum(AssigOneGrammarParser.NumContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNum(AssigOneGrammarParser.NumContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMulti(AssigOneGrammarParser.MultiContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -107,18 +119,6 @@ public class AssigOneGrammarBaseListener implements AssigOneGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitId(AssigOneGrammarParser.IdContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInt(AssigOneGrammarParser.IntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInt(AssigOneGrammarParser.IntContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

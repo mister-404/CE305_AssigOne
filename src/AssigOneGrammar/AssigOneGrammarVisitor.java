@@ -52,6 +52,13 @@ public interface AssigOneGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParens(AssigOneGrammarParser.ParensContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code num}
+	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNum(AssigOneGrammarParser.NumContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code Multi}
 	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
 	 * @param ctx the parse tree
@@ -65,11 +72,4 @@ public interface AssigOneGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitId(AssigOneGrammarParser.IdContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code int}
-	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInt(AssigOneGrammarParser.IntContext ctx);
 }
