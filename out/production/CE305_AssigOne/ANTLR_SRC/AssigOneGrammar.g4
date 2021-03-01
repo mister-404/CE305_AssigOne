@@ -9,21 +9,12 @@ statement: expr ';'          # printExpr
 
 expr: expr op=('*'|'/') expr # Multi
     | expr op=('+'|'-') expr # Add
-    | NUM                    # num
+    | INT                    # int
     | ID                     # id
     | '(' expr ')'           # parens
     ;
 
-NUM: INT
-   | FLOAT
-;
-
-
-
 ID : [a-zA-Z]+ ; // matches variable names
-FLOAT: INT'.'INT
-     | '.'INT
-;
 INT : [0-9]+ ; // matches integers
 NEW_LINE:'\r'? '\n' ;
 WS : [ \t]+ -> skip ; // removes whitespace
