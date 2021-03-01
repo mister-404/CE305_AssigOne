@@ -1,12 +1,8 @@
 # Expression Analyser
 
-### Assignment One for CE305 by bb18960
+### Assignment One for CE305 by bb18960 (Benjamin Kirk Brightwell)
 
-![A piece of abstract art to serve as the cover page for this report](/Users/bkb/Documents/Uni/CE305_AssigOne/report/imgs/abstractArt.jpg)
-
-
-
-
+[TOC]
 
 
 
@@ -86,6 +82,29 @@ I decided to implement it in this way so that you could see what part of the cod
 
 
 ## What's going on
+
+### Exception handling
+
+One of the exceptions in the program is when you try to use a keyword that is otherwise not known. This could be indicative of the idea that they are trying to access the value at that variable even though it has yet to be set.
+
+
+
+The following file is used for this example:-
+
+```
+arthur;
+
+```
+
+
+
+When asking for the evaluation, the following occurs:-
+
+![Not in memory exception](./imgs/notInMemoryExceptionExample.png)
+
+
+
+This is implemented using the class **NotInMemoryException**.
 
 
 
