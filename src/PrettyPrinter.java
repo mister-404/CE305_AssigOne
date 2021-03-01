@@ -7,10 +7,9 @@ public class PrettyPrinter extends AssigOneGrammarBaseVisitor<String> {
     public String visitProgram(AssigOneGrammarParser.ProgramContext ctx) {
         StringBuilder buildUp = new StringBuilder();
 
-        for (ParseTree pT : ctx.children) {
+        for (ParseTree pT : ctx.children)
             if (!pT.getText().equals("\n"))
                 buildUp.append(this.visit(pT)).append(';').append('\n');
-        }
 
         return buildUp.toString();
     }
@@ -34,6 +33,11 @@ public class PrettyPrinter extends AssigOneGrammarBaseVisitor<String> {
     @Override
     public String visitAdd(AssigOneGrammarParser.AddContext ctx) {
         return visit(ctx.expr(0)) + " " + ctx.op.getText() + " " + visit(ctx.expr(1));
+    }
+
+    @Override
+    public String visitPower(AssigOneGrammarParser.PowerContext ctx) {
+        return visit(ctx.expr(0)) + ctx.op.getText() + visit(ctx.expr(1));
     }
 
     @Override

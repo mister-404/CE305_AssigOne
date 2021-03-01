@@ -9,6 +9,13 @@ public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
     private final Map<String, Integer> mem = new HashMap<>(); //remembers assigned values
 
     @Override
+    public Integer visitPower(AssigOneGrammarParser.PowerContext ctx) {
+        int left = visit(ctx.expr(0));
+        int right = visit(ctx.expr(1));
+        return (int) Math.pow(left, right);
+    }
+
+    @Override
     public Integer visitPrintExpr(AssigOneGrammarParser.PrintExprContext ctx) {
         Integer value = visit(ctx.expr());
         System.out.println(ctx.expr().getText() + " = " + value);

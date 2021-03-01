@@ -112,6 +112,18 @@ public class AssigOneGrammarBaseListener implements AssigOneGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPower(AssigOneGrammarParser.PowerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPower(AssigOneGrammarParser.PowerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInt(AssigOneGrammarParser.IntContext ctx) { }
 	/**
 	 * {@inheritDoc}

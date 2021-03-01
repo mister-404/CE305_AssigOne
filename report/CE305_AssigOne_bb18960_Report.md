@@ -2,13 +2,90 @@
 
 ### Assignment One for CE305 by bb18960
 
+![A piece of abstract art to serve as the cover page for this report](/Users/bkb/Documents/Uni/CE305_AssigOne/report/imgs/abstractArt.jpg)
+
+
+
+
+
 
 
 # Specification
 
+## Tokens
+
+| Token identifier | Why it's used                                                |
+| ---------------- | ------------------------------------------------------------ |
+| ID               | Represents a word that is associated with a variable name    |
+| INT              | Represents an integer in the program                         |
+| NEW_LINE         | Represents a new line and account for the carriage return character used commonly on Windows systems |
+| WS               | Superfluous white space (which gets removed)                 |
+| ENDSTMT          | An identifier representing the end of a statement            |
+| MUL              | An identifier indicating that multiplication is desired      |
+| DIV              | An identifier indicating that division is desired            |
+| ADD              | An identifier indicating that addition is desired            |
+| SUB              | An identifier indicating that subtraction is desired         |
+| POW              | An identifier indicating that exponentiation is desired      |
+
+
+
+## Syntax
+
+The grammar for my project is defined in the **AssigOneGrammar.g4** file. It is written as to follow the rules for the ANTLR version 4 standard.
+
+
+
+In my language a program is something that consists of multiple statements.
+
+
+
+A statement can either be a call to display the value of an expression; setting a variable (an ID) to a certain value or an empty new line.
+
+
+
+An expression can be a mathematical operation like an addition, division, exponentiation, etc; an ID name; an integer or an expression in parentheses.
+
 
 
 # Implementation
+
+## How to use
+
+One can run the MainProg main method and be presented with the option to choose a file name. From that point, you can choose whether you'd like to see the pretty printed version of the code you've just entered, get the evaluations for the program (effectively run it), choose a new file or quit.
+
+
+
+![Options menu](./imgs/optionsMenu.png)
+
+### Pretty print
+
+```
+dog  =2+9;
+dog;
+dog/2;
+```
+
+For the above file, the pretty printed representation of that program comes to be:-
+
+![Pretty print example](./imgs/pPrintExample.png)
+
+
+
+Notice how the unnecessary whitespace is removed and in instead, we have nice formatting that makes the program easier to read on the eyes.
+
+### Evaluations
+
+If one chose the evaluations option instead, you would be presented with the value of dog and then, the value of dog/2 as seen below:-
+
+![Evaluation Example](./imgs/evalExample.png)
+
+
+
+I decided to implement it in this way so that you could see what part of the code was the reason for a printing of its value.
+
+
+
+## What's going on
 
 
 
@@ -40,9 +117,9 @@ The resources that I used to fuel my understanding of ANTLR and surrounding topi
 
 
 
-[1]T. Parr, *The Definitive ANTLR 4 Reference, 2nd Edition*, 2nd ed. Dallas, Texas: Pragmatic Programmers, LLC, 2012.
-
-[2]G. Tomassetti, "The ANTLR Mega Tutorial", *tomassetti.me*. [Online]. Available: https://tomassetti.me/antlr-mega-tutorial/. [Accessed: 01- Mar- 2021].
-
-[3]G. Loganathan, "ANTLR Hello World! - Arithmetic Expression Parser", *Java Helps*. [Online]. Available: https://www.javahelps.com/2019/04/antlr-hello-world-arithmetic-expression.html. [Accessed: 01- Mar- 2021].
+| [1]  | T. Parr, *The Definitive ANTLR 4 Reference, 2nd Edition*, 2nd ed. Dallas, Texas: Pragmatic Programmers, LLC, 2012. |
+| ---- | ------------------------------------------------------------ |
+| [2]  | G. Tomassetti, “The ANTLR Mega Tutorial,” *tomassetti.me*. [Online]. Available: https://tomassetti.me/antlr-mega-tutorial/. [Accessed: 01-Mar-2021]. |
+| [3]  | G. Loganathan, “ANTLR Hello World! - Arithmetic Expression Parser,” *Java Helps*. [Online]. Available: https://www.javahelps.com/2019/04/antlr-hello-world-arithmetic-expression.html. [Accessed: 01-Mar-2021]. |
+| [4]  | P. Blenkhorn, *red and abstract painting*. Sensory Art House, 2019. |
 
