@@ -31,7 +31,7 @@ public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
     public Integer visitAdd(AssigOneGrammarParser.AddContext ctx) {
         int left = visit(ctx.expr(0));
         int right = visit(ctx.expr(1));
-        if(ctx.op.getType() == AssigOneGrammarParser.ADD)
+        if (ctx.op.getType() == AssigOneGrammarParser.ADD)
             return left + right;
         else
             return left - right;
@@ -46,10 +46,10 @@ public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
     public Integer visitMulti(AssigOneGrammarParser.MultiContext ctx) {
         int left = visit(ctx.expr(0));
         int right = visit(ctx.expr(1));
-        if(ctx.op.getType() == AssigOneGrammarParser.MUL)
+        if (ctx.op.getType() == AssigOneGrammarParser.MUL)
             return left * right;
         else
-            return left/right;
+            return left / right;
     }
 
     @Override

@@ -7,7 +7,7 @@ public class PrettyPrinter extends AssigOneGrammarBaseVisitor<String> {
     public String visitProgram(AssigOneGrammarParser.ProgramContext ctx) {
         StringBuilder buildUp = new StringBuilder();
 
-        for(ParseTree pT : ctx.children)
+        for (ParseTree pT : ctx.children)
             buildUp.append(this.visit(pT)).append('\n');
 
         return buildUp.toString();
