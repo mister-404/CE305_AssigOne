@@ -1,11 +1,12 @@
 import AssigOneGrammar.AssigOneGrammarBaseVisitor;
 import AssigOneGrammar.AssigOneGrammarParser;
+import GramException.NotInMemoryException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
-    Map<String, Integer> mem = new HashMap<>(); //remembers assigned values
+    private final Map<String, Integer> mem = new HashMap<>(); //remembers assigned values
 
     @Override
     public Integer visitPrintExpr(AssigOneGrammarParser.PrintExprContext ctx) {
@@ -33,8 +34,7 @@ public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
         int right = visit(ctx.expr(1));
         if (ctx.op.getType() == AssigOneGrammarParser.ADD)
             return left + right;
-        else
-            return left - right;
+        else return left - right;
     }
 
     @Override
@@ -48,14 +48,20 @@ public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
         int right = visit(ctx.expr(1));
         if (ctx.op.getType() == AssigOneGrammarParser.MUL)
             return left * right;
-        else
-            return left / right;
+        else return left / right;
     }
 
     @Override
     public Integer visitId(AssigOneGrammarParser.IdContext ctx) {
         String id = ctx.ID().getText();
-        return mem.getOrDefault(id, 0);
+        if (mem.containsKey(id))
+            return mem.get(id);
+        else try {
+            throw new NotInMemoryException(id);
+        } catch (NotInMemoryException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
     }
 
     @Override

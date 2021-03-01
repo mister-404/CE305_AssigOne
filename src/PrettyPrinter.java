@@ -8,7 +8,7 @@ public class PrettyPrinter extends AssigOneGrammarBaseVisitor<String> {
         StringBuilder buildUp = new StringBuilder();
 
         for (ParseTree pT : ctx.children) {
-            if(!pT.getText().equals("\n"))
+            if (!pT.getText().equals("\n"))
                 buildUp.append(this.visit(pT)).append(';').append('\n');
         }
 

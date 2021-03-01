@@ -14,13 +14,13 @@ public class MainProg {
     public static void main(String[] args) throws IOException {
         String fileName = promptForFileName();
         boolean contRunning = true;
-        while(contRunning) {
+        while (contRunning) {
             System.out.println("""
-Would you like to:-
-    a) Get the pretty printed version for the file you just chose?
-    b) Get the evaluations for the file you just chose?
-    c) Choose a new file?
-    q) Quit?""");
+                    Would you like to:-
+                        a) Get the pretty printed version for the file you just chose?
+                        b) Get the evaluations for the file you just chose?
+                        c) Choose a new file?
+                        q) Quit?""");
 
             String choice = userInputGetter.nextLine().toLowerCase();
 
@@ -40,6 +40,7 @@ Would you like to:-
                 }
             }
         }
+        userInputGetter.close();
     }
 
     private static String promptForFileName() {
