@@ -4,8 +4,6 @@
 
 [TOC]
 
-
-
 # Specification
 
 ## Tokens
@@ -23,21 +21,13 @@
 | SUB              | An identifier indicating that subtraction is desired         |
 | POW              | An identifier indicating that exponentiation is desired      |
 
-
-
 ## Syntax
 
 The grammar for my project is defined in the **AssigOneGrammar.g4** file. It is written as to follow the rules for the ANTLR version 4 standard.
 
-
-
 In my language a program is something that consists of multiple statements.
 
-
-
 A statement can either be a call to display the value of an expression; setting a variable (an ID) to a certain value or an empty new line.
-
-
 
 An expression can be a mathematical operation like an addition, division, exponentiation, etc; an ID name; an integer or an expression in parentheses.
 
@@ -47,7 +37,7 @@ An expression can be a mathematical operation like an addition, division, expone
 
 ## How to use
 
-One can run the MainProg main method and be presented with the option to choose a file name. From that point, you can choose whether you'd like to see the pretty printed version of the code you've just entered, get the evaluations for the program (effectively run it), choose a new file or quit.
+One can run the **MainProg** main method and be presented with the option to choose a file name. From that point, you can choose whether you'd like to see the pretty printed version of the code you've just entered, get the evaluations for the program (effectively run it), choose a new file or quit.
 
 
 
@@ -65,8 +55,6 @@ For the above file, the pretty printed representation of that program comes to b
 
 ![Pretty print example](./imgs/pPrintExample.png)
 
-
-
 Notice how the unnecessary whitespace is removed and in instead, we have nice formatting that makes the program easier to read on the eyes.
 
 ### Evaluations
@@ -74,8 +62,6 @@ Notice how the unnecessary whitespace is removed and in instead, we have nice fo
 If one chose the evaluations option instead, you would be presented with the value of dog and then, the value of dog/2 as seen below:-
 
 ![Evaluation Example](./imgs/evalExample.png)
-
-
 
 I decided to implement it in this way so that you could see what part of the code was the reason for a printing of its value.
 
@@ -87,8 +73,6 @@ I decided to implement it in this way so that you could see what part of the cod
 
 One of the exceptions in the program is when you try to use a keyword that is otherwise not known. This could be indicative of the idea that they are trying to access the value at that variable even though it has yet to be set.
 
-
-
 The following file is used for this example:-
 
 ```
@@ -96,13 +80,9 @@ arthur;
 
 ```
 
-
-
 When asking for the evaluation, the following occurs:-
 
 ![Not in memory exception](./imgs/notInMemoryExceptionExample.png)
-
-
 
 This is implemented using the class **NotInMemoryException**.
 
@@ -123,6 +103,10 @@ A list of tools that I used to complete this project were:-
 | git                                       | v2.24.0                       | Version control allowing me to swiftly program with the safe knowledge that my work is backed up if I need to revert back to previous versions. | https://git-scm.com/                               |
 
 
+
+# Extended Features
+
+Support for both integer and floating point values is in this project. It knows when to return the output as an integer or a float based on the operands.
 
 
 

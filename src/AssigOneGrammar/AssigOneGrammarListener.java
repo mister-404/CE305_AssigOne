@@ -114,6 +114,18 @@ public interface AssigOneGrammarListener extends ParseTreeListener {
 	 */
 	void exitPower(AssigOneGrammarParser.PowerContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code float}
+	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterFloat(AssigOneGrammarParser.FloatContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code float}
+	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitFloat(AssigOneGrammarParser.FloatContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code int}
 	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
 	 * @param ctx the parse tree

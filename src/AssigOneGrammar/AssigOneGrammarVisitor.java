@@ -73,6 +73,13 @@ public interface AssigOneGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPower(AssigOneGrammarParser.PowerContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code float}
+	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFloat(AssigOneGrammarParser.FloatContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code int}
 	 * labeled alternative in {@link AssigOneGrammarParser#expr}.
 	 * @param ctx the parse tree

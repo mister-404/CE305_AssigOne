@@ -124,6 +124,18 @@ public class AssigOneGrammarBaseListener implements AssigOneGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFloat(AssigOneGrammarParser.FloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFloat(AssigOneGrammarParser.FloatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInt(AssigOneGrammarParser.IntContext ctx) { }
 	/**
 	 * {@inheritDoc}

@@ -5,61 +5,82 @@ import GramException.NotInMemoryException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
-    private final Map<String, Integer> mem = new HashMap<>(); //remembers assigned values
+public class VisiEval extends AssigOneGrammarBaseVisitor<Number> {
+    private final Map<String, Number> mem = new HashMap<>(); //remembers assigned values
 
     @Override
-    public Integer visitPower(AssigOneGrammarParser.PowerContext ctx) {
-        int left = visit(ctx.expr(0));
-        int right = visit(ctx.expr(1));
-        return (int) Math.pow(left, right);
+    public Number visitPower(AssigOneGrammarParser.PowerContext ctx) {
+        if (
+                ctx.expr(0).start.getType() == (AssigOneGrammarParser.FLOAT) ||
+                        ctx.expr(1).start.getType() == AssigOneGrammarParser.FLOAT)
+            return Math.pow(visit(ctx.expr(0)).floatValue(), visit(ctx.expr(1)).floatValue());
+        else
+            return (int) Math.pow(visit(ctx.expr(0)).intValue(), visit(ctx.expr(1)).intValue());
     }
 
     @Override
-    public Integer visitPrintExpr(AssigOneGrammarParser.PrintExprContext ctx) {
-        Integer value = visit(ctx.expr());
+    public Number visitPrintExpr(AssigOneGrammarParser.PrintExprContext ctx) {
+        Number value = visit(ctx.expr());
         System.out.println(ctx.expr().getText() + " = " + value);
         return 0;
     }
 
     @Override
-    public Integer visitAssign(AssigOneGrammarParser.AssignContext ctx) {
+    public Number visitAssign(AssigOneGrammarParser.AssignContext ctx) {
         String id = ctx.ID().getText();
-        int value = visit(ctx.expr());
+        Number value = visit(ctx.expr());
         mem.put(id, value);
         return value;
     }
 
     @Override
-    public Integer visitBlank(AssigOneGrammarParser.BlankContext ctx) {
+    public Number visitBlank(AssigOneGrammarParser.BlankContext ctx) {
         return super.visitBlank(ctx);
     }
 
     @Override
-    public Integer visitAdd(AssigOneGrammarParser.AddContext ctx) {
-        int left = visit(ctx.expr(0));
-        int right = visit(ctx.expr(1));
+    public Number visitAdd(AssigOneGrammarParser.AddContext ctx) {
+        Number left = visit(ctx.expr(0));
+        Number right = visit(ctx.expr(1));
+
         if (ctx.op.getType() == AssigOneGrammarParser.ADD)
-            return left + right;
-        else return left - right;
+            if (
+                    (ctx.expr(0).start.getType() == AssigOneGrammarParser.FLOAT ||
+                            ctx.expr(1).start.getType() == AssigOneGrammarParser.FLOAT))
+                return left.floatValue() + right.floatValue();
+            else return left.intValue() + right.intValue();
+        else if (
+                (ctx.expr(0).start.getType() == AssigOneGrammarParser.FLOAT ||
+                        ctx.expr(1).start.getType() == AssigOneGrammarParser.FLOAT))
+            return left.floatValue() - right.floatValue();
+        else return left.intValue() - right.intValue();
     }
 
     @Override
-    public Integer visitParens(AssigOneGrammarParser.ParensContext ctx) {
+    public Number visitParens(AssigOneGrammarParser.ParensContext ctx) {
         return visit(ctx.expr());
     }
 
     @Override
-    public Integer visitMulti(AssigOneGrammarParser.MultiContext ctx) {
-        int left = visit(ctx.expr(0));
-        int right = visit(ctx.expr(1));
+    public Number visitMulti(AssigOneGrammarParser.MultiContext ctx) {
+        Number left = visit(ctx.expr(0));
+        Number right = visit(ctx.expr(1));
+
         if (ctx.op.getType() == AssigOneGrammarParser.MUL)
-            return left * right;
-        else return left / right;
+            if (
+                    (ctx.expr(0).start.getType() == AssigOneGrammarParser.FLOAT ||
+                            ctx.expr(1).start.getType() == AssigOneGrammarParser.FLOAT))
+                return left.floatValue() * right.floatValue();
+            else return left.intValue() * right.intValue();
+        else if (
+                (ctx.expr(0).start.getType() == AssigOneGrammarParser.FLOAT ||
+                        ctx.expr(1).start.getType() == AssigOneGrammarParser.FLOAT))
+            return left.floatValue() / right.floatValue();
+        else return left.intValue() / right.intValue();
     }
 
     @Override
-    public Integer visitId(AssigOneGrammarParser.IdContext ctx) {
+    public Number visitId(AssigOneGrammarParser.IdContext ctx) {
         String id = ctx.ID().getText();
         if (mem.containsKey(id))
             return mem.get(id);
@@ -74,5 +95,10 @@ public class VisiEval extends AssigOneGrammarBaseVisitor<Integer> {
     @Override
     public Integer visitInt(AssigOneGrammarParser.IntContext ctx) {
         return Integer.valueOf(ctx.INT().getText());
+    }
+
+    @Override
+    public Float visitFloat(AssigOneGrammarParser.FloatContext ctx) {
+        return Float.valueOf(ctx.FLOAT().getText());
     }
 }
