@@ -35,7 +35,7 @@ public class MainProg {
                     ParseTree tree = parser.program(); //start parsing at program beginning
                     switch (choice) {
                         case "a" -> System.out.println(new PrettyPrinter().visit(tree));
-                        case "b" -> new VisiEval().visit(tree);
+                        case "b" -> new VisiEvalFull().visit(tree);
                     }
                 }
             }

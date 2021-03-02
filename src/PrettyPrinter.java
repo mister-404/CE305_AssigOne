@@ -59,4 +59,9 @@ public class PrettyPrinter extends AssigOneGrammarBaseVisitor<String> {
     public String visitInt(AssigOneGrammarParser.IntContext ctx) {
         return ctx.getText();
     }
+
+    @Override
+    public String visitFloat(AssigOneGrammarParser.FloatContext ctx) {
+        return ctx.getText();
+    }
 }

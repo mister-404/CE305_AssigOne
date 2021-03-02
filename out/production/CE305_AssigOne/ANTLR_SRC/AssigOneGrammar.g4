@@ -19,9 +19,16 @@ expr: '(' expr ')'                      # parens
     | ID                                # id
     ; //supports order of operations
 
+//boolExpr: left=expr op='==' right=expr  # equates
+//
+//    ;
+
 /*
 TOKENS
 */
+//NUM: FLOAT
+//   | INT
+//   ;
 FLOAT : INT? '.' INT;
 ID : [a-zA-Z]+ ; // matches variable names
 INT : [0-9]+ ; // matches integers

@@ -26,6 +26,9 @@ expr: '(' expr ')'                      # parens
 /*
 TOKENS
 */
+//NUM: FLOAT
+//   | INT
+//   ;
 FLOAT : INT? '.' INT;
 ID : [a-zA-Z]+ ; // matches variable names
 INT : [0-9]+ ; // matches integers
