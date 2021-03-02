@@ -19,6 +19,10 @@ expr: '(' expr ')'                      # parens
     | ID                                # id
     ; //supports order of operations
 
+//boolExpr: left=expr op='==' right=expr  # equates
+//
+//    ;
+
 /*
 TOKENS
 */
