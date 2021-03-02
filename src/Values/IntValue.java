@@ -1,6 +1,6 @@
 package Values;
 
-public class IntValue extends Value{
+public class IntValue extends NumberValue{
     private final int val;
 
     public IntValue(int val) {

@@ -1,6 +1,6 @@
 package Values;
 
-public class FloatValue extends Value{
+public class FloatValue extends NumberValue{
     private final float val;
 
     public FloatValue(float val) {
