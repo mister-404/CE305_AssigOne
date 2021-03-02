@@ -1,8 +1,16 @@
-# Expression Analyser
+**<span style="font-size:45px;"><u>Expression Analyser</u></span>**
 
-### Assignment One for CE305 by bb18960 (Benjamin Kirk Brightwell)
+**Assignment One for CE305 by bb18960 (Benjamin Kirk Brightwell)**
+
+------
+
+# Table of Contents
 
 [TOC]
+
+------
+
+
 
 # Specification
 
@@ -12,6 +20,7 @@
 | ---------------- | ------------------------------------------------------------ |
 | ID               | Represents a word that is associated with a variable name    |
 | INT              | Represents an integer in the program                         |
+| FLOAT            | Represents a floating point number in the program            |
 | NEW_LINE         | Represents a new line and account for the carriage return character used commonly on Windows systems |
 | WS               | Superfluous white space (which gets removed)                 |
 | ENDSTMT          | An identifier representing the end of a statement            |
@@ -30,6 +39,8 @@ In my language a program is something that consists of multiple statements.
 A statement can either be a call to display the value of an expression; setting a variable (an ID) to a certain value or an empty new line.
 
 An expression can be a mathematical operation like an addition, division, exponentiation, etc; an ID name; an integer or an expression in parentheses.
+
+------
 
 
 
@@ -88,6 +99,12 @@ This is implemented using the class **NotInMemoryException**.
 
 
 
+Another exception is called **NotNumberValueException**. This helps lay the groundwork for future Value subclasses in the language like booleans because if you try to add 9 to true, the program will then make it clear that this is not legal syntax.
+
+------
+
+
+
 # How tools were applied
 
 A list of tools that I used to complete this project were:-
@@ -102,6 +119,8 @@ A list of tools that I used to complete this project were:-
 | Typora                                    | v0.9.9.36.2                   | Used to create this report. It's a markdown editor which can then be used to export to pdf (as well as many other things). | http://typora.io                                   |
 | git                                       | v2.24.0                       | Version control allowing me to swiftly program with the safe knowledge that my work is backed up if I need to revert back to previous versions. | https://git-scm.com/                               |
 
+------
+
 
 
 # Extended Features
@@ -109,6 +128,12 @@ A list of tools that I used to complete this project were:-
 Support for both integer and floating point values is in this project. It knows when to return the output as an integer or a float based on the operands.
 
 
+
+I was able to do this by making the visitor generic be of type Value - a custom class that is effectively a wrapper. From there I can use instanceof to determine what amount of precision to do the arithmetic at.
+
+
+
+Multiple statements are supported in this system.
 
 ------
 
@@ -118,11 +143,10 @@ Support for both integer and floating point values is in this project. It knows 
 
 The resources that I used to fuel my understanding of ANTLR and surrounding topics were the following:-
 
-
-
 | [1]  | T. Parr, *The Definitive ANTLR 4 Reference, 2nd Edition*, 2nd ed. Dallas, Texas: Pragmatic Programmers, LLC, 2012. |
 | ---- | ------------------------------------------------------------ |
 | [2]  | G. Tomassetti, “The ANTLR Mega Tutorial,” *tomassetti.me*. [Online]. Available: https://tomassetti.me/antlr-mega-tutorial/. [Accessed: 01-Mar-2021]. |
 | [3]  | G. Loganathan, “ANTLR Hello World! - Arithmetic Expression Parser,” *Java Helps*. [Online]. Available: https://www.javahelps.com/2019/04/antlr-hello-world-arithmetic-expression.html. [Accessed: 01-Mar-2021]. |
-| [4]  | P. Blenkhorn, *red and abstract painting*. Sensory Art House, 2019. |
+
+------
 

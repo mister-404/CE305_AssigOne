@@ -10,9 +10,9 @@ public class NotNumberValueException extends GramException{
     }
 
     public static String nonNumValsToString(List<Value> nonNumVals){
-        StringBuilder buildUp = null;
+        StringBuilder buildUp = new StringBuilder();
         for(Value v : nonNumVals){
-            if(buildUp == null)
+            if(buildUp.isEmpty())
                 buildUp = new StringBuilder(v.toString());
             buildUp.append(",").append(v.toString());
         }
