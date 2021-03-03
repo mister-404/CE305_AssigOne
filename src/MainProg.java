@@ -1,11 +1,14 @@
 import AssigOneGrammar.AssigOneGrammarLexer;
 import AssigOneGrammar.AssigOneGrammarParser;
+import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainProg {
@@ -20,6 +23,7 @@ public class MainProg {
                         a) Get the pretty printed version for the file you just chose?
                         b) Get the evaluations for the file you just chose?
                         c) Choose a new file?
+                        d) Draw a Abstract Syntax Tree of the expression?
                         q) Quit?""");
 
             String choice = userInputGetter.nextLine().toLowerCase();
@@ -35,12 +39,24 @@ public class MainProg {
                     ParseTree tree = parser.program(); //start parsing at program beginning
                     switch (choice) {
                         case "a" -> System.out.println(new PrettyPrinter().visit(tree));
-                        case "b" -> new VisiEvalFull().visit(tree);
+                        case "b" -> new Eval().visit(tree);
+                        case "d" -> drawTree(tree, parser);
                     }
                 }
             }
         }
         userInputGetter.close();
+    }
+
+    private static void drawTree(ParseTree tree, AssigOneGrammarParser parser) {
+        JPanel treePanel = new JPanel();
+        TreeViewer treeViewer = new TreeViewer(Arrays.asList(parser.getRuleNames()),tree);
+        treePanel.add(treeViewer);
+        JFrame treeFrame = new JFrame("");
+        treeFrame.add(treePanel);
+        treeFrame.pack();
+        treeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        treeFrame.setVisible(true);
     }
 
     private static String promptForFileName() {

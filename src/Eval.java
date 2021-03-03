@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VisiEvalFull extends AssigOneGrammarBaseVisitor<Value> {
+public class Eval extends AssigOneGrammarBaseVisitor<Value> {
     private final Map<String, Value> mem = new HashMap<>(); //remembers assigned values
 
     @Override
